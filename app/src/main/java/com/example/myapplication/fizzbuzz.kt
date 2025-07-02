@@ -1,51 +1,32 @@
 package com.example.myapplication
 fun fizz(n: Int): String
 {
-    var ans = "";
-    if (n %17 != 0){
-        if (n %143 == 0) ans = ans + "FezzBong";
-        else
-            if (n % 11 == 0) ans = ans + "Bong";
-            else {
-                if (n % 3 == 0) ans = ans + "Fizz";
-                if (n % 13 == 0) ans = ans + "Fezz";
-                if (n % 5 == 0) ans = ans + "Buzz";
-                if (n % 7 == 0) ans = ans + "Bang";
-
-                if (n % 3 != 0 && n % 5 != 0 && n % 7 != 0 && n % 13 != 0) ans=n.toString();
-
-            }
-        }
+    var ans = ""
+    var arr = arrayOf<String>()
+    if (n % 11 == 0 && n % 13 == 0) arr += "FezzBong"
     else
-    {
-        if (n %143 == 0) ans = ans + "BongFezz";
-        else
-            if (n % 11 == 0) ans = ans + "Bong";
-            else {
-                if (n % 7 == 0) ans = ans + "Bang";
-                if (n % 5 == 0) ans = ans + "Buzz";
-                if (n % 13 == 0) ans = ans + "Fezz";
-                if (n % 3 == 0) ans = ans + "Fizz";
+        if (n % 11 == 0) arr += "Bong"
+        else {
+            if (n % 3 == 0) arr += "Fizz"
+            if (n % 13 == 0) arr += "Fezz"
+            if (n % 5 == 0) arr += "Buzz"
+            if (n % 7 == 0) arr += "Bang"
+            if (arr.size ==0) arr += n.toString()
+        }
 
-
-                if (n % 3 != 0 && n % 5 != 0 && n % 7 != 0 && n % 13 != 0) ans = n.toString();
-
-            }
-    }
-    return ans;
+    if (n%17 == 0) arr.reverse()
+    return arr.joinToString(separator = "")
 }
 fun main()
 {
     //first 300
-    var index = 1;
-    while (index <= 300)
+    for (i in (1..300))
     {
-        println(fizz(index));
-        index +=1;
+        println(fizz(i))
     }
-    //any number you read
-    var n = readln().toInt();
-    println(fizz(n));
+    //any number you read now
+    var n = readln().toInt()
+    println(fizz(n))
 
-
+//change
 }
